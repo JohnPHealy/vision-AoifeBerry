@@ -48,21 +48,17 @@ public class light : MonoBehaviour
     IEnumerator coroutineA()
     {
         // wait for 1 second
-        Debug.Log("coroutineA created");
-        yield return new WaitForSeconds(.5f);
-        yield return StartCoroutine(coroutineB());
-        Debug.Log("coroutineA running again");
+      while(lightAmount >= 0)
+        {
+            lightAmount -= fallOff;
+            lightIntensity += fallOff2;
+            yield return new WaitForSeconds(2f);
+        }
+        
+        
+        
     }
 
-    IEnumerator coroutineB()
-    {
-        Debug.Log("coroutineB created");
-        yield return new WaitForSeconds(1f);
-        lightAmount -= fallOff;
-        lightIntensity += fallOff2;
-        yield return StartCoroutine(coroutineA());
-        
-        Debug.Log("coroutineB enables coroutineA to run");
-    }
+ 
 
 }
