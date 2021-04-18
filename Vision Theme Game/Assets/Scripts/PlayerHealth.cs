@@ -35,6 +35,22 @@ public class PlayerHealth : MonoBehaviour
      
         
     }
+    public void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "SpikeDamage")
+        {
+            currentHealth -= damage;
+            healthBar.SetHealth(currentHealth);
+
+        }
+
+        if (col.gameObject.tag == "Fall")
+        {
+            SceneManager.LoadScene("SampleScene");
+
+        }
+    }
+
 
     void Update()
     {

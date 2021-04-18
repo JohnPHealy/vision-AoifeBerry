@@ -5,11 +5,11 @@ using UnityEngine;
 public class light : MonoBehaviour
 {
 
-    public float lightAmount = 5;
-    public float lightIntensity = 2;
+    public float lightAmount = 10;
+    public float lightIntensity = 4;
     public float addRange = 5;
     public float addIntens = 2;
-    public float fallOff = - 1f;
+    public float fallOff = - 3f;
     public float fallOff2 = -0.5f;
 
 
@@ -36,12 +36,18 @@ public class light : MonoBehaviour
 
     public void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "light")
+        if (col.gameObject.tag == "light" && lightAmount <= 40)
         {
             lightAmount += addRange;
+          
+        }
+
+        if (col.gameObject.tag == "light" && lightIntensity <= 10)
+        {
+          
             lightIntensity += addIntens;
         }
-    
+
 
     }
 
