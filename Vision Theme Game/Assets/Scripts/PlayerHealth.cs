@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public int damage = 1;
     public healthBar healthBar;
     public Transform SpawnPoint;
+    public int GreenKeys = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +33,20 @@ public class PlayerHealth : MonoBehaviour
             healthBar.SetHealth(currentHealth);
         }
 
-     
-        
+        if (col.gameObject.tag == "GreenKey")
+        {
+            GreenKeys++;
+            Destroy(col.gameObject);
+        }
+
+
+        if (col.gameObject.tag == "GreenDoor" && GreenKeys >= 1)
+        {
+            Destroy(col.gameObject);
+        }
+
+
+
     }
     public void OnTriggerEnter(Collider col)
     {

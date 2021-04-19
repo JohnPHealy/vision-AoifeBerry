@@ -9,6 +9,8 @@ TagManager:
   - Spike
   - SpikeDamage
   - Fall
+  - GreenDoor
+  - GreenKey
   layers:
   - Default
   - TransparentFX
