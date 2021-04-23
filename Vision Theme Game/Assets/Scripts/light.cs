@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
+
 
 public class light : MonoBehaviour
 {
@@ -11,6 +14,8 @@ public class light : MonoBehaviour
     public float addIntens = 2;
     public float fallOff = - 3f;
     public float fallOff2 = -0.5f;
+  
+    
 
 
     // Start is called before the first frame update
@@ -18,6 +23,7 @@ public class light : MonoBehaviour
     {
         
         StartCoroutine(coroutineA());
+
 
     }
 
@@ -27,7 +33,11 @@ public class light : MonoBehaviour
     void Update()
     {
         GetComponent<Light>().range = lightAmount;
+        
         GetComponent<Light>().intensity = lightIntensity;
+      //GetComponent<NavMeshObstacle>().radius = lightAmount/10;
+        GetComponent<NavMeshObstacle>().radius = lightIntensity;
+
 
 
     }
