@@ -11,6 +11,7 @@ TagManager:
   - Fall
   - GreenDoor
   - GreenKey
+  - button
   layers:
   - Default
   - TransparentFX
