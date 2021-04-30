@@ -25,43 +25,39 @@ public class PlayerHealth : MonoBehaviour
 
     // Update is called once per frame
 
-    public void OnCollisionEnter(Collision col)
+  
+    public void OnTriggerEnter(Collider other)
     {
-        if (col.gameObject.tag == "Enemy")
-        {
-            currentHealth -= damage;
-            healthBar.SetHealth(currentHealth);
-        }
-
-        if (col.gameObject.tag == "GreenKey")
-        {
-            GreenKeys++;
-            Destroy(col.gameObject);
-        }
-
-
-        if (col.gameObject.tag == "GreenDoor" && GreenKeys >= 1)
-        {
-            Destroy(col.gameObject);
-        }
-
-
-
-    }
-    public void OnTriggerEnter(Collider col)
-    {
-        if (col.gameObject.tag == "SpikeDamage")
+        if (other.gameObject.tag == "SpikeDamage")
         {
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
 
         }
 
-        if (col.gameObject.tag == "Fall")
+        if (other.gameObject.tag == "Fall")
         {
             SceneManager.LoadScene("SampleScene");
 
         }
+        if (other.gameObject.tag == "Enemy")
+        {
+            currentHealth -= damage;
+            healthBar.SetHealth(currentHealth);
+        }
+
+        if (other.gameObject.tag == "GreenKey")
+        {
+            GreenKeys++;
+            Destroy(other.gameObject);
+        }
+
+
+        if (other.gameObject.tag == "GreenDoor" && GreenKeys >= 1)
+        {
+            Destroy(other.gameObject);
+        }
+
     }
 
 

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LightDestroy : MonoBehaviour
 {
-    public void OnCollisionEnter(Collision col)
+    public void OnTriggerEnter(Collider other)
     {
-        if (col.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             Destroy(gameObject);
         }

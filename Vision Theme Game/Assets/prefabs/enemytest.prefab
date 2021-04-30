@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2829752489707587053}
   - component: {fileID: 488461901}
   - component: {fileID: 488461902}
+  - component: {fileID: 1773482485171875930}
   m_Layer: 0
   m_Name: enemytest
   m_TagString: Enemy
@@ -95,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2980771, y: 1.1185124, z: 1.2370249}
-  m_Center: {x: 0.008978128, y: 0.059256196, z: -0.000000059604645}
+  m_Size: {x: 1.0263447, y: 1.0119158, z: 1.0169848}
+  m_Center: {x: -0.0023607824, y: 0.0063890084, z: -0.00811995}
 --- !u!114 &488461901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,3 +134,16 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
+--- !u!65 &1773482485171875930
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829752489707587052}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.057676, y: 1.7854292, z: 1.6509191}
+  m_Center: {x: 0.037835184, y: 0.20287333, z: -0.13524476}

@@ -12,8 +12,8 @@ public class light : MonoBehaviour
     public float lightIntensity = 4;
     public float addRange = 5;
     public float addIntens = 2;
-    public float fallOff = - 3f;
-    public float fallOff2 = -0.5f;
+    public float fallOff = - -1f;
+    public float fallOff2 = -0.2f;
   
     
 
@@ -36,7 +36,7 @@ public class light : MonoBehaviour
         
         GetComponent<Light>().intensity = lightIntensity;
       //GetComponent<NavMeshObstacle>().radius = lightAmount/10;
-        GetComponent<NavMeshObstacle>().radius = lightIntensity;
+        GetComponent<NavMeshObstacle>().radius = lightIntensity/1.2f;
 
 
 
@@ -44,15 +44,15 @@ public class light : MonoBehaviour
 
   
 
-    public void OnCollisionEnter(Collision col)
+    public void OnTriggerEnter(Collider other)
     {
-        if (col.gameObject.tag == "light" && lightAmount <= 40)
+        if (other.gameObject.tag == "light" && lightAmount <= 40)
         {
             lightAmount += addRange;
           
         }
 
-        if (col.gameObject.tag == "light" && lightIntensity <= 10)
+        if (other.gameObject.tag == "light" && lightIntensity <= 10)
         {
           
             lightIntensity += addIntens;
@@ -66,7 +66,7 @@ public class light : MonoBehaviour
         // wait for 1 second
       while(lightAmount >= 0)
         {
-            lightAmount -= fallOff;
+            lightAmount += fallOff;
             lightIntensity += fallOff2;
             yield return new WaitForSeconds(2f);
         }

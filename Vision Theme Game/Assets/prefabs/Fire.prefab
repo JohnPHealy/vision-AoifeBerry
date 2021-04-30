@@ -6739,9 +6739,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2438425968337167781}
+  - component: {fileID: 125782417}
   m_Layer: 0
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6766,6 +6767,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &125782417
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3971249273486220641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7444267, y: 1.1102858, z: 1.5927835}
+  m_Center: {x: -2.6882076, y: -3.060419, z: 0.5031769}
 --- !u!1 &4208498726697781671
 GameObject:
   m_ObjectHideFlags: 0
