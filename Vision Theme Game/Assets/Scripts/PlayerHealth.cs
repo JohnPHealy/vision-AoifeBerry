@@ -13,8 +13,9 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public int damage = 1;
     public healthBar healthBar;
+    public Animator DoorOpen;
+    public GameObject Text;
 
- 
 
 
     public Transform SpawnPoint;
@@ -62,10 +63,34 @@ public class PlayerHealth : MonoBehaviour
 
         if (other.gameObject.tag == "GreenDoor" && GreenKeys >= 1)
         {
-            Destroy(other.gameObject);
+            Debug.Log("open");
+                    DoorOpen.SetBool("Open", true);
+
+        }
+        else if (other.gameObject.tag == "GreenDoor" && GreenKeys >= 0)
+        {
+            Text.SetActive(true);
         }
 
+
+    
+
     }
+
+   public void OnTriggerExit(Collider other)
+    {
+     
+
+       if (other.gameObject.tag == "GreenDoor")
+       {
+           
+
+
+          Text.SetActive(false);
+
+       }
+
+  }
 
 
     void Update()
