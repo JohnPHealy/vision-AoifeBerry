@@ -12,6 +12,12 @@ TagManager:
   - GreenDoor
   - GreenKey
   - button
+  - RedDoor
+  - BlueDoor
+  - RedKey
+  - BlueKey
+  - Gate
+  - Lever
   layers:
   - Default
   - TransparentFX

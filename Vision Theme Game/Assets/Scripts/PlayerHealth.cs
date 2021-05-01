@@ -14,14 +14,17 @@ public class PlayerHealth : MonoBehaviour
     public int damage = 1;
     public healthBar healthBar;
     public Animator DoorOpen;
+    public Animator gateOpen;
     public GameObject Text;
 
 
 
     public Transform SpawnPoint;
     public int GreenKeys = 0;
+    public int RedKeys = 0;
+    public int BlueKeys = 0;
 
-    
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -42,6 +45,11 @@ public class PlayerHealth : MonoBehaviour
             healthBar.SetHealth(currentHealth);
 
         }
+        if (other.gameObject.tag == "Lever")
+        {
+
+            gateOpen.SetBool("GateOpen", true);
+        }
 
         if (other.gameObject.tag == "Fall")
         {
@@ -59,21 +67,50 @@ public class PlayerHealth : MonoBehaviour
             GreenKeys++;
             Destroy(other.gameObject);
         }
+        if (other.gameObject.tag == "RedKey")
+        {
+            RedKeys++;
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "BlueKey")
+        {
+            BlueKeys++;
+            Destroy(other.gameObject);
+        }
 
 
         if (other.gameObject.tag == "GreenDoor" && GreenKeys >= 1)
         {
             Debug.Log("open");
                     DoorOpen.SetBool("Open", true);
-
         }
         else if (other.gameObject.tag == "GreenDoor" && GreenKeys >= 0)
         {
             Text.SetActive(true);
         }
 
+        if (other.gameObject.tag == "BlueDoor" && BlueKeys >= 1)
+        {
+            Debug.Log("open1");
+            DoorOpen.SetBool("Open1", true);
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.tag == "BlueDoor" && BlueKeys >= 0)
+        {
+            Text.SetActive(true);
+        }
 
-    
+        if (other.gameObject.tag == "RedDoor" && RedKeys >= 1)
+        {
+            Debug.Log("open2");
+            DoorOpen.SetBool("Open2", true);
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.tag == "RedDoor" && RedKeys >= 0)
+        {
+            Text.SetActive(true);
+        }
+
 
     }
 
@@ -83,14 +120,21 @@ public class PlayerHealth : MonoBehaviour
 
        if (other.gameObject.tag == "GreenDoor")
        {
-           
-
-
+       
           Text.SetActive(false);
-
        }
+        if (other.gameObject.tag == "BlueDoor")
+        {
 
-  }
+            Text.SetActive(false);
+        }
+        if (other.gameObject.tag == "RedDoor")
+        {
+
+            Text.SetActive(false);
+        }
+
+    }
 
 
     void Update()
