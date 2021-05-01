@@ -8,22 +8,29 @@ public class PlayerHealth : MonoBehaviour
 
 
 {
-
+    //health
     public int maxHealth = 10;
     public int currentHealth;
     public int damage = 1;
     public healthBar healthBar;
+
+ 
+
+
     public Transform SpawnPoint;
     public int GreenKeys = 0;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+
+   
+
     }
 
-    // Update is called once per frame
+  
 
   
     public void OnTriggerEnter(Collider other)

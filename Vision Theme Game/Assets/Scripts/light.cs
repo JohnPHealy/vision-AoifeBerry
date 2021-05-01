@@ -14,8 +14,9 @@ public class light : MonoBehaviour
     public float addIntens = 2;
     public float fallOff = - -1f;
     public float fallOff2 = -0.2f;
-  
-    
+
+
+
 
 
     // Start is called before the first frame update
@@ -23,7 +24,7 @@ public class light : MonoBehaviour
     {
         
         StartCoroutine(coroutineA());
-
+      
 
     }
 
@@ -32,13 +33,14 @@ public class light : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         GetComponent<Light>().range = lightAmount;
         
         GetComponent<Light>().intensity = lightIntensity;
       //GetComponent<NavMeshObstacle>().radius = lightAmount/10;
-        GetComponent<NavMeshObstacle>().radius = lightIntensity/1.2f;
+        GetComponent<NavMeshObstacle>().radius = lightIntensity/1.4f;
 
-
+      
 
     }
 
@@ -46,16 +48,17 @@ public class light : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "light" && lightAmount <= 40)
+        if (other.gameObject.tag == "light" && lightAmount <= 30)
         {
             lightAmount += addRange;
-          
+           
         }
 
         if (other.gameObject.tag == "light" && lightIntensity <= 10)
         {
           
             lightIntensity += addIntens;
+         
         }
 
 
@@ -68,6 +71,7 @@ public class light : MonoBehaviour
         {
             lightAmount += fallOff;
             lightIntensity += fallOff2;
+           
             yield return new WaitForSeconds(2f);
         }
         
