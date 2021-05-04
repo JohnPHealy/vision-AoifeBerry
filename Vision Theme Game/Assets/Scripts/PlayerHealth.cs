@@ -16,6 +16,9 @@ public class PlayerHealth : MonoBehaviour
     public Animator DoorOpen;
     public Animator gateOpen;
     public GameObject Text;
+    public GameObject GreenKey;
+    public GameObject BlueKey;
+    public GameObject RedKey;
 
 
 
@@ -65,16 +68,19 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.tag == "GreenKey")
         {
             GreenKeys++;
+            GreenKey.SetActive(true);
             Destroy(other.gameObject);
         }
         if (other.gameObject.tag == "RedKey")
         {
             RedKeys++;
+            RedKey.SetActive(true);
             Destroy(other.gameObject);
         }
         if (other.gameObject.tag == "BlueKey")
         {
             BlueKeys++;
+            BlueKey.SetActive(true);
             Destroy(other.gameObject);
         }
 
@@ -82,7 +88,8 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.tag == "GreenDoor" && GreenKeys >= 1)
         {
             Debug.Log("open");
-                    DoorOpen.SetBool("Open", true);
+            GreenKey.SetActive(false);
+            DoorOpen.SetBool("Open", true);
         }
         else if (other.gameObject.tag == "GreenDoor" && GreenKeys >= 0)
         {
@@ -93,6 +100,7 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.Log("open1");
             DoorOpen.SetBool("Open1", true);
+            BlueKey.SetActive(false);
             Destroy(other.gameObject);
         }
         else if (other.gameObject.tag == "BlueDoor" && BlueKeys >= 0)
@@ -104,6 +112,7 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.Log("open2");
             DoorOpen.SetBool("Open2", true);
+            RedKey.SetActive(false);
             Destroy(other.gameObject);
         }
         else if (other.gameObject.tag == "RedDoor" && RedKeys >= 0)

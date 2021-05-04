@@ -52,7 +52,9 @@ public class pausemenu : MonoBehaviour
     public void RestartGame()
     {
         Debug.Log("Restart");
-        SceneManager.LoadScene("SampleScene");
+        GameIsPaused = false;
         Time.timeScale = 1f;
+        SceneManager.LoadScene("SampleScene");
+       
     }
 }

@@ -28,6 +28,8 @@ public class menu : MonoBehaviour
     public void RestartGame()
     {
         Debug.Log("Restart");
+        pausemenu.GameIsPaused = false;
+        Time.timeScale = 1f;
         SceneManager.LoadScene("SampleScene");
         
     }
