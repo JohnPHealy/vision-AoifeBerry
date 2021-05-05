@@ -18,6 +18,8 @@ TagManager:
   - BlueKey
   - Gate
   - Lever
+  - Cat
+  - CatCam
   layers:
   - Default
   - TransparentFX

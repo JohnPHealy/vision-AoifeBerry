@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject RedKey;
     public Animator playerAnimator;
     public GameObject player;
-
+    public GameObject Blood;
 
 
     public Transform SpawnPoint;
@@ -35,7 +35,8 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         playerAnimator = GetComponentInChildren<Animator>();
-       
+        Blood.SetActive(false);
+
 
 
     }
@@ -49,7 +50,8 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
-            
+            Blood.SetActive(true);
+            StartCoroutine(coroutineBlood());
 
         }
         else
@@ -71,6 +73,7 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
+            StartCoroutine(coroutineBlood());
         }
 
         if (other.gameObject.tag == "GreenKey")
@@ -156,7 +159,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             playerAnimator.SetBool("dead", true);
             Debug.Log("dead");
@@ -174,6 +177,21 @@ public class PlayerHealth : MonoBehaviour
             
             yield return new WaitForSeconds(2f);
             SceneManager.LoadScene("SampleScene");
+
+        }
+
+
+
+    }
+    IEnumerator coroutineBlood()
+    {
+        // wait for 1 second
+        while (currentHealth >=1)
+        {
+            
+            yield return new WaitForSeconds(1f);
+            Blood.SetActive(false);
+            StopCoroutine(coroutineBlood());
 
         }
 
