@@ -20,10 +20,11 @@ public class SecondPlayerMovement : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     bool isGrounded;
+    public Animator playerAnimator;
 
     void Start()
     {
-      
+        playerAnimator = GetComponentInChildren<Animator>();
     }
 
 
@@ -37,16 +38,29 @@ public class SecondPlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
+    
+   
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-        if(Input.GetButtonDown("Jump")&& isGrounded)
+       
+        if (Input.GetButtonDown("Jump")&& isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
+        if (Mathf.Abs(horizontal+vertical)>0)
+        {
+            playerAnimator.SetBool("IsRunning", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("IsRunning", false);
+
+        }
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+        
 
         if (direction.magnitude >= 0.1f)
         {
@@ -54,6 +68,8 @@ public class SecondPlayerMovement : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             controller.Move(direction * speed * Time.deltaTime);
+           
+
         }
     }
 

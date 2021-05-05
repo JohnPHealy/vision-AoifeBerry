@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
+
 
 
 
@@ -28,22 +30,22 @@ public class light : MonoBehaviour
 
     }
 
- 
+
 
     // Update is called once per frame
     void Update()
     {
 
         GetComponent<Light>().range = lightAmount;
-        
-        GetComponent<Light>().intensity = lightIntensity;
-      //GetComponent<NavMeshObstacle>().radius = lightAmount/10;
-        GetComponent<NavMeshObstacle>().radius = lightIntensity/1.4f;
 
-      
+        GetComponent<Light>().intensity = lightIntensity;
+        //GetComponent<NavMeshObstacle>().radius = lightAmount/10;
+        GetComponent<NavMeshObstacle>().radius = lightIntensity / 1.4f;
+        float x = Mathf.Lerp(lightUI.value,lightAmount,0.2f);
+        lightUI.value = x;
+
 
     }
-
   
 
     public void OnTriggerEnter(Collider other)
@@ -64,6 +66,8 @@ public class light : MonoBehaviour
 
     }
 
+    public Slider lightUI;
+    
     IEnumerator coroutineA()
     {
         // wait for 1 second
