@@ -19,6 +19,8 @@ public class PlayerHealth : MonoBehaviour
     public GameObject GreenKey;
     public GameObject BlueKey;
     public GameObject RedKey;
+    public Animator playerAnimator;
+    public GameObject player;
 
 
 
@@ -32,8 +34,9 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        playerAnimator = GetComponentInChildren<Animator>();
+       
 
-   
 
     }
 
@@ -46,7 +49,12 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
+            
 
+        }
+        else
+        {
+            playerAnimator.SetBool("Damage", false);
         }
         if (other.gameObject.tag == "Lever")
         {
@@ -148,10 +156,28 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        if (currentHealth <= 0)
+        if (currentHealth == 0)
         {
+            playerAnimator.SetBool("dead", true);
+            Debug.Log("dead");
+            player.GetComponent<SecondPlayerMovement>().enabled = false;
+            StartCoroutine(coroutineB());
 
-            SceneManager.LoadScene("SampleScene");
         }
+    }
+
+    IEnumerator coroutineB()
+    {
+        // wait for 1 second
+        while (currentHealth <= 0)
+        {
+            
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene("SampleScene");
+
+        }
+
+
+
     }
 }

@@ -21,6 +21,7 @@ public class SecondPlayerMovement : MonoBehaviour
     float turnSmoothVelocity;
     bool isGrounded;
     public Animator playerAnimator;
+    
 
     void Start()
     {
@@ -34,8 +35,10 @@ public class SecondPlayerMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if(isGrounded && velocity.y < 0)
+            
         {
             velocity.y = -2f;
+            playerAnimator.SetBool("IsJumping", false);
         }
 
     
@@ -47,7 +50,10 @@ public class SecondPlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump")&& isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            playerAnimator.SetBool("IsJumping", true);
+            Debug.Log("jumping");
         }
+     
 
         if (Mathf.Abs(horizontal+vertical)>0)
         {
