@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 10;
     public int currentHealth;
     public int damage = 1;
+    public int heal = 1;
     public healthBar healthBar;
     public Animator DoorOpen;
     public Animator RedDoorOpen;
@@ -30,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
     public AudioSource RedDoor;
     public AudioSource GreenDoor;
 
+   
 
     public Transform SpawnPoint;
     public int GreenKeys = 0;
@@ -110,6 +112,7 @@ public class PlayerHealth : MonoBehaviour
             GreenKey.SetActive(false);
             DoorOpen.SetBool("Open", true);
            GreenDoor.Play();
+            
         }
         else if (other.gameObject.tag == "GreenDoor" && GreenKeys >= 0)
         {
@@ -122,6 +125,7 @@ public class PlayerHealth : MonoBehaviour
             BlueDoorOpen.SetBool("BlueOpen", true);
             BlueKey.SetActive(false);
             BlueDoor.Play();
+           
             // Destroy(other.gameObject);
         }
         else if (other.gameObject.tag == "BlueDoor" && BlueKeys >= 0)
@@ -135,11 +139,19 @@ public class PlayerHealth : MonoBehaviour
             RedDoorOpen.SetBool("RedOpen", true);
             RedKey.SetActive(false);
             RedDoor.Play();
+          
+
             //Destroy(other.gameObject);
         }
         else if (other.gameObject.tag == "RedDoor" && RedKeys >= 0)
         {
             Text.SetActive(true);
+        }
+
+        if (other.gameObject.tag == "heart" && currentHealth <= 10)
+        {
+            currentHealth ++;
+            healthBar.SetHealth(currentHealth);
         }
 
 
@@ -206,7 +218,7 @@ public class PlayerHealth : MonoBehaviour
 
         }
 
-
-
     }
+
+
 }

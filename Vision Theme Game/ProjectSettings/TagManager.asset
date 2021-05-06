@@ -21,6 +21,7 @@ TagManager:
   - Cat
   - CatCam
   - trap2
+  - heart
   layers:
   - Default
   - TransparentFX
