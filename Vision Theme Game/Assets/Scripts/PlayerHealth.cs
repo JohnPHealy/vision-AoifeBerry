@@ -26,6 +26,9 @@ public class PlayerHealth : MonoBehaviour
     public GameObject Blood;
     public Animator trap2;
     public Animator lever;
+    public AudioSource BlueDoor;
+    public AudioSource RedDoor;
+    public AudioSource GreenDoor;
 
 
     public Transform SpawnPoint;
@@ -106,6 +109,7 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("open");
             GreenKey.SetActive(false);
             DoorOpen.SetBool("Open", true);
+           GreenDoor.Play();
         }
         else if (other.gameObject.tag == "GreenDoor" && GreenKeys >= 0)
         {
@@ -117,7 +121,8 @@ public class PlayerHealth : MonoBehaviour
             //Debug.Log("open1");
             BlueDoorOpen.SetBool("BlueOpen", true);
             BlueKey.SetActive(false);
-           // Destroy(other.gameObject);
+            BlueDoor.Play();
+            // Destroy(other.gameObject);
         }
         else if (other.gameObject.tag == "BlueDoor" && BlueKeys >= 0)
         {
@@ -126,9 +131,10 @@ public class PlayerHealth : MonoBehaviour
 
         if (other.gameObject.tag == "RedDoor" && RedKeys >= 1)
         {
-           // Debug.Log("open2");
+           Debug.Log("open2");
             RedDoorOpen.SetBool("RedOpen", true);
             RedKey.SetActive(false);
+            RedDoor.Play();
             //Destroy(other.gameObject);
         }
         else if (other.gameObject.tag == "RedDoor" && RedKeys >= 0)
