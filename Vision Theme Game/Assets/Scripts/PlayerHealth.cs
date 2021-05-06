@@ -30,8 +30,9 @@ public class PlayerHealth : MonoBehaviour
     public AudioSource BlueDoor;
     public AudioSource RedDoor;
     public AudioSource GreenDoor;
+    
 
-   
+
 
     public Transform SpawnPoint;
     public int GreenKeys = 0;
@@ -76,7 +77,11 @@ public class PlayerHealth : MonoBehaviour
 
         if (other.gameObject.tag == "Fall")
         {
-            SceneManager.LoadScene("SampleScene");
+
+            Debug.Log("Falling");
+           
+           // currentHealth = 10;
+           // healthBar.SetHealth(currentHealth);
 
         }
         if (other.gameObject.tag == "Enemy")
@@ -199,7 +204,16 @@ public class PlayerHealth : MonoBehaviour
         {
             
             yield return new WaitForSeconds(2f);
-            SceneManager.LoadScene("SampleScene");
+            GameObject.Find("PlayerController").SendMessage("gotoCP");
+            currentHealth = 10;
+            healthBar.SetHealth(currentHealth);
+            player.GetComponent<SecondPlayerMovement>().enabled = true;
+            playerAnimator.SetBool("dead", false);
+            Blood.SetActive(false);
+            StopCoroutine(coroutineBlood());
+            
+
+
 
         }
 

@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class Fall : MonoBehaviour
 {
-    public void OnCollisionEnter(Collision other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             SceneManager.LoadScene("SampleScene");
+           
+     
         }
 
 
