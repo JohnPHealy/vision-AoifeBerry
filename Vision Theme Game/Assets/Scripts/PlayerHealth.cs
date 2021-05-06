@@ -14,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
     public int damage = 1;
     public healthBar healthBar;
     public Animator DoorOpen;
+    public Animator RedDoorOpen;
+    public Animator BlueDoorOpen;
     public Animator gateOpen;
     public GameObject Text;
     public GameObject GreenKey;
@@ -22,6 +24,8 @@ public class PlayerHealth : MonoBehaviour
     public Animator playerAnimator;
     public GameObject player;
     public GameObject Blood;
+    public Animator trap2;
+    public Animator lever;
 
 
     public Transform SpawnPoint;
@@ -62,6 +66,7 @@ public class PlayerHealth : MonoBehaviour
         {
 
             gateOpen.SetBool("GateOpen", true);
+            lever.SetBool("leverPull", true);
         }
 
         if (other.gameObject.tag == "Fall")
@@ -109,10 +114,10 @@ public class PlayerHealth : MonoBehaviour
 
         if (other.gameObject.tag == "BlueDoor" && BlueKeys >= 1)
         {
-            Debug.Log("open1");
-            DoorOpen.SetBool("Open1", true);
+            //Debug.Log("open1");
+            BlueDoorOpen.SetBool("BlueOpen", true);
             BlueKey.SetActive(false);
-            Destroy(other.gameObject);
+           // Destroy(other.gameObject);
         }
         else if (other.gameObject.tag == "BlueDoor" && BlueKeys >= 0)
         {
@@ -121,10 +126,10 @@ public class PlayerHealth : MonoBehaviour
 
         if (other.gameObject.tag == "RedDoor" && RedKeys >= 1)
         {
-            Debug.Log("open2");
-            DoorOpen.SetBool("Open2", true);
+           // Debug.Log("open2");
+            RedDoorOpen.SetBool("RedOpen", true);
             RedKey.SetActive(false);
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
         }
         else if (other.gameObject.tag == "RedDoor" && RedKeys >= 0)
         {

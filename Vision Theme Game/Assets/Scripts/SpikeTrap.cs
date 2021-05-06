@@ -13,7 +13,13 @@ public class SpikeTrap : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             spikes.SetBool("PlaySpike",true);
-            Debug.Log("walked into spikes");
+           // Debug.Log("walked into spikes");
+
+        }
+        if (col.gameObject.tag == "Player")
+        {
+            spikes.SetBool("trap2", true);
+            //Debug.Log("walked into spikes");
 
         }
     }
@@ -23,7 +29,13 @@ public class SpikeTrap : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             spikes.SetBool("PlaySpike", false);
-            Debug.Log("left spikes");
+          //  Debug.Log("left spikes");
+
+        }
+        if (col.gameObject.tag == "Player")
+        {
+            spikes.SetBool("trap2", false);
+          //  Debug.Log("left spikes");
 
         }
     }

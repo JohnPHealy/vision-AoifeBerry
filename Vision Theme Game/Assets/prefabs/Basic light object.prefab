@@ -6021,7 +6021,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3451835110423318278}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70d5ce93ea735bc4a9d0379aefe7a178, type: 3}
   m_Name: 
@@ -6069,8 +6069,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.62352943, b: 0.10980392, a: 1}
-  m_Intensity: 0.38
-  m_Range: 2.82
+  m_Intensity: 5.29
+  m_Range: 4.85
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
