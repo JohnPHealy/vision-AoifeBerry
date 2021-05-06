@@ -50,13 +50,13 @@ public class light : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "light" && lightAmount <= 30)
+        if (other.gameObject.tag == "light" && lightAmount <= 20)
         {
             lightAmount += addRange;
            
         }
 
-     if (other.gameObject.tag == "light" && lightIntensity <= 10)
+     if (other.gameObject.tag == "light" && lightIntensity <= 8)
        {
         
           lightIntensity += addIntens;

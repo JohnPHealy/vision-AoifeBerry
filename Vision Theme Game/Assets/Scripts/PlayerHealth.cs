@@ -66,7 +66,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            playerAnimator.SetBool("Damage", false);
+           // playerAnimator.SetBool("Damage", false);
         }
         if (other.gameObject.tag == "Lever")
         {
@@ -157,6 +157,11 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth ++;
             healthBar.SetHealth(currentHealth);
+        }
+
+        if(other.gameObject.tag == "Cat")
+        {
+            SceneManager.LoadScene("EndScene");
         }
 
 
